@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/fa3870dfe0.js" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function() {
+      
+      $("p").hide();
+
+      
+      $(".domain").hover(function() {
+        $(this).find('p').slideToggle();
+      });
+
+      
+      $(".domain").hover(
+        function() {
+          $(this).css('border-color', 'orange');
+        },
+        function() {
+          $(this).css('border-color', 'grey');
+        }
+      );
+    });
+
+    $(document).ready(function() {
+      
+      $(".domain").hide();
+  
+      
+      $(".header").ready(function() {
+        $(this).find('.domain').slideDown("slow");
+      });
+  
+    });  
+    
+    $(document).ready(function() {
+      $('.domain').on('click', function() {
+        var destination = $(this).data('location');
+        $('#destinationName').text(destination);
+      });
+    });
+  </script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      
+    }
+    #bg-video {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: -1;
+        }
+    .header {
+      color: black;
+      padding: 10px;
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+    .domain {
+      border: 1px solid grey;
+      margin: 20px;
+      padding: 10px;
+      display: inline-block;
+      width: 300px;
+      vertical-align: top;
+      color: black;
+    }
+    .domain img {
+      max-width: 100%;
+      height: 200px;
+    }
+    .dropdown,.dropdown-menu{
+    text-align:right;
+    background-color: transparent;
+   }
+   #head{
+    font-family: 'Brush Script MT', cursive;
+   }
+   #heading{
+    font-family: Copperplate, Papyrus, fantasy;
+   }
+   button{
+    background-color: lightgoldenrodyellow;
+   }
+  </style>
+</head>
+<body>
+    <video id="bg-video" autoplay loop muted >
+        <source src="bgvideo.mp4" type="video/mp4">
+    </video>
+<div class="header">
+    <h1 id="heading">QUIZZ MASTERS</h1>
+    
+  <div class="domain" id="domain1" data-location="General Knowledge">
+    <img src="gd.jpeg" alt="gd">
+    <h2>General Knowledge</h2>
+    <p>General knowledge encompasses a broad spectrum of information about the world, spanning geography, history, culture, and current events. </p>
+    <button href="gd.html" target=_blank type="button" ><a href="gd.html" >Take Test</a></button>
+</div>
+  <div class="domain" id="domain2" data-location="Science">
+    <img src="science.webp" alt="sci">
+    <h2>Science</h2>
+    <p>Science explores the natural world, uncovering the secrets of life, matter, energy, and the universe through observation, experimentation, and research.</p>
+    <button href="science.html" target=_blank type="button" ><a href="science.html" >Take Test</a></button>
+</div>
+  <div class="domain" id="domain3" data-location="Aptitude">
+    <img src="aptitude.jpeg" alt="apti">
+    <h2>Aptitude</h2>
+    <p>Aptitude assesses problem-solving abilities and critical thinking, measuring one's potential to excel in various areas like tests, job roles, and more.</p>
+    <button href="aptitude.html" target=_blank type="button" ><a href="aptitude.html" >Take Test</a></button>
+</div><br>
+  <div class="domain" id="domain4" data-location="Programming">
+    <img src="programming.jpeg" alt="program">
+    <h2>Programming</h2>
+    <p>Programming is the art of instructing computers to perform tasks using languages like C, Python, and Java, enabling software development.</p>
+    <button href="programming.html" target=_blank type="button" ><a href="programming.html" >Take Test</a></button>
+</div>
+  <div class="domain" id="domain5" data-location="Mathmatics">
+    <img src="math.webp" alt="maths">
+    <h2>Mathmatics</h2>
+    <p>Mathematics is the language of numbers, shapes, and patterns, enabling us to solve problems, quantify, and understand the world's intricacies.</p>
+    <button href="maths.html" target=_blank type="button" ><a href="maths.html" >Take Test</a></button>
+</div>
+  <div class="domain" id="domain6" data-location="Current Affairs">
+    <img src="current.jpeg" alt="current">
+    <h2>Current Affairs</h2>
+    <p>Current affairs encompass the latest news, events, and developments worldwide, keeping us informed about politics, culture, technology, and society.</p>
+    <button href="current.html" target=_blank type="button" ><a href="current.html" >Take Test</a></button>
+</div>
+</div>
+</body>
+</html>

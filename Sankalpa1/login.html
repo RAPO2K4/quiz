@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login and Signup Page</title>
+  <link rel='stylesheet' href='form-style.css' type='text/css' />
+  <style>
+    body{
+        font-family: Arial, sans-serif;
+        padding-left: 30%;
+        padding-top: 10%;
+        background-image: url("log.jpeg");
+        background-size: 100% 195%;
+        background-repeat: no-repeat;
+    }  
+    input{
+        width: 100%;
+        padding: 10px 10px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid lightslategray;
+        background-color: transparent;
+        
+    }
+    .container {   
+            max-width: 400px;
+            background-color: transparent;  
+    }
+    .card{
+            background: transparent;
+    }
+    .card-header{
+        text-align: center;
+    }   
+    #loginEmail,#loginPassword{
+            background: transparent;
+    }
+    button {
+        transition-duration: 0.4s;
+        border: 2px solid lightslategray;
+        border-radius: 10px;
+        color: darkblue;
+        font-size: 16px;
+        padding: 12px 28px;
+        margin: 4px 2px;
+        background-color: transparent;
+    }
+    button:hover {
+        background-color: orangered;
+        color: white;
+    }
+    a{
+        color: darkblue;
+    }
+    .form-group span{
+        position: right;
+        color: red;
+        bottom: 12px;
+        right: 17px;
+        font-size: 14px;
+    }
+      </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                
+                <div class="card">
+                    <div class="card-header" >
+                        <h4>Login</h4>
+                    </div>
+                    <div class="card-body">
+                        <form id="maillogin" action="homepage.html">
+                            <div class="form-group">
+                                <label for="loginEmail">Email address</label>
+                                <input type="text" name="login" id="loginEmail" placeholder="Enter email" >
+                                <span id="email-error"> </span>
+                            </div>
+                            <div class="form-group" name="mailpass">
+                                <label for="loginPassword">Password</label>
+                                <input type="password" id="password" class="form-control"  id="loginPassword" placeholder="Password" >
+                                <span id="password-error"> </span>
+                            </div>
+                            <button type="submit">Login</button>
+                            <button type="button"><a href="signin.html"> Signup </a></button>
+                        </form>
+                    </div>
+                </div>
+             
+            
+            <div class="col-md-6">
+                
+
+        </div>
+    </div>
+
+<script>
+  const form = document.getElementById("maillogin");
+  const emailInput = document.getElementById("loginEmail");
+  const passwordInput = document.getElementById("password");
+  const emailError = document.getElementById("email-error");
+  const passwordError = document.getElementById("password-error");
+
+  
+  function validateEmail() {
+    const emailValue = emailInput.value;
+    const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  
+    if (emailRegex.test(emailValue)) {
+      emailError.textContent = "";
+      return true;
+    } else {
+        emailError.textContent = "Invalid email format";
+        return false;
+    }
+  }
+
+  
+  function validatePassword() {
+    const passwordValue = passwordInput.value;
+  
+    if (passwordValue.length >= 8) {
+      passwordError.textContent = "";
+      return true;
+    } else {
+        passwordError.textContent = "Password must be at least 8 characters long";
+        return false;
+        
+    }
+  }
+  
+  form.addEventListener("submit", function(event) {
+    if (!validateEmail()){
+      event.preventDefault();
+    } 
+  
+    if (!validatePassword()) {
+      event.preventDefault(); 
+    }
+    if (emailInput.value.trim() === '' || passwordInput.value.trim() === '') {
+      alert("Email and password cannot be empty.");
+      event.preventDefault(); 
+    }
+    });
+
+    emailInput.addEventListener("input", validateEmail);
+    passwordInput.addEventListener("input", validatePassword);
+</script>
+</body>
+</html>

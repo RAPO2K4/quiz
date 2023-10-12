@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz Master</title>
+    <style>
+        body {
+            background-image: url("bgimage.jpg");
+            background-size:cover;
+            background-attachment: fixed;
+        }
+       
+    </style>
+</head>
+<body>  
+    
+    <!-- Rest of your existing HTML code -->
+    <h1>Welcome to the Quiz Master!</h1>
+    <h3><strong>Test your Skills</strong></h3>
+
+    <div id="quiz-container">
+    </div>
+
+    <button onclick="submitQuiz()">Submit Quiz</button>
+
+    <script>
+        // Your JavaScript code remains unchanged
+        // ...
+    </script>
+</body>
+</html>
+
+</head>
+<body>  
+    <h1>Welcome to the Quiz Master!</h1>
+    <h3><strong>Test your Skills</strong></h3>
+
+    <div id="quiz-container">
+    </div>
+
+    <button onclick="submitQuiz()">Submit Quiz</button>
+
+    <script>
+        const questions = [
+            {
+                question: "What is the capital of France?",
+                options: ["a) Paris", "b) London", "c) Berlin", "d) Rome"],
+                correctAnswer: "a"
+            },
+            {
+                question: "What is 2 + 2?",
+                options: ["a) 3", "b) 4", "c) 5", "d) 6"],
+                correctAnswer: "b"
+            },
+            {
+                question: "What is the largest planet in our solar system?",
+                options: ["a) Earth", "b) Jupiter", "c) Mars", "d) Saturn"],
+                correctAnswer: "b"
+            },
+            {
+                question: "Who painted the Mona Lisa?",
+                options: ["a) Michelangelo", "b) Leonardo da Vinci", "c) Vincent van Gogh", "d) Pablo Picasso"],
+                correctAnswer: "b"
+            },
+            {
+                question: "What is the currency of Japan?",
+                options: ["a) Yen", "b) Euro", "c) Dollar", "d) Rupee"],
+                correctAnswer: "a"
+            },
+           
+        ];
+
+        const quizContainer = document.getElementById('quiz-container');
+
+        function generateQuiz() {
+            for (let i = 0; i < questions.length; i++) {
+                const question = questions[i];
+                const questionElement = document.createElement('div');
+                questionElement.innerHTML = `
+                    <h2>Question ${i + 1}:</h2>
+                    <p>${question.question}</p>
+                    ${generateOptions(question, i)}
+                `;
+                quizContainer.appendChild(questionElement);
+            }
+        }
+
+        function generateOptions(question, index) {
+            let optionsHTML = '';
+            for (let i = 0; i < question.options.length; i++) {
+                optionsHTML += `
+                    <label>
+                        <input type="radio" name="q${index}" value="${question.options[i].charAt(0)}" ${i === 0 ? 'checked' : ''}> ${question.options[i]}
+                    </label><br>
+                `;
+            }
+            return optionsHTML;
+        }
+
+        function submitQuiz() {
+            const totalQuestions = questions.length;
+            let correctAnswers = 0;
+
+            for (let i = 0; i < totalQuestions; i++) {
+                const question = questions[i];
+                const selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
+                if (selectedOption) {
+                    const userAnswer = selectedOption.value;
+                    if (userAnswer === question.correctAnswer) {
+                        correctAnswers++;
+                    }
+                    // Highlight correct and incorrect answers
+                    const labels = document.querySelectorAll(`input[name="q${i}"] + label`);
+                    labels.forEach(label => {
+                        const optionValue = label.textContent.trim();
+                        if (optionValue.startsWith(question.correctAnswer)) {
+                            label.style.color = 'green'; // Correct answer (green)
+                        } else {
+                            label.style.color = 'red'; // Incorrect answer (red)
+                        }
+                    });
+                }
+            }
+
+            // Display the final score
+            const scorePercentage = (correctAnswers / totalQuestions) * 100;
+            alert(`Your Score: ${correctAnswers}/${totalQuestions} (${scorePercentage}%)`);
+        }
+
+        generateQuiz();
+    </script>
+</body>
+</html>
